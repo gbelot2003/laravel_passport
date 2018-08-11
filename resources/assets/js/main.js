@@ -1,15 +1,7 @@
-
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
-require('./bootstrap');
-window.Vue = require('vue');
-
-import Router from './routes.js';
+import Vue from 'vue'
 import App from './App.vue';
-import Auth from './packages/auth/auth';
+import Router from './routes.js';
+import Auth from 'auth-js';
 import VueResource from 'vue-resource';
 
 Vue.use(VueResource);
@@ -34,7 +26,7 @@ Router.beforeEach(
     }
 );
 
-const app = new Vue({
+new Vue({
     el: '#app',
     render: h => h(App),
     router: Router
