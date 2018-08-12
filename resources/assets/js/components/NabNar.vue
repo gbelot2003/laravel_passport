@@ -5,6 +5,7 @@
                 <li role="presentation"><router-link :data-active="true" data-exact="true"  to="/">Home</router-link></li>
                 <li role="presentation"><router-link data-active="true" data-exact="true" to="/login">Login</router-link></li>
                 <li role="presentation"><router-link data-active="true" data-exact="true" to="/register">Register</router-link></li>
+                <li role="presentation"><router-link data-active="true" data-exact="true" to="/feed">Feed</router-link></li>
                 <li role="presentation"><router-link data-active="true" data-exact="true" to="/about">About</router-link></li>
             </ul>
         </nav>

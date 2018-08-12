@@ -27,6 +27,8 @@
 </template>
 
 <script>
+    import client_secret from '../../env';
+
     export default {
         data () {
             return {
@@ -39,13 +41,13 @@
             login () {
                 let data = {
                     client_id: 2,
-                    client_secret: 'yduFRs5MMMx5PUIkWS8Ynujz5f06zdxq2AQZIno7',
+                    client_secret: client_secret,
                     grant_type: 'password',
                     username: this.email,
                     password: this.password,
 
                 };
-                this.$http.post("http://localhost/oauth/token", data)
+                this.$http.post("/oauth/token", data)
                     .then(resp => {
                         this.$auth.setToken(resp.body.access_token, resp.body.expires_in + Date.now());
                         this.$router.push("/about");

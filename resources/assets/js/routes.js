@@ -5,6 +5,7 @@ import HomePage from "./components/pages/HomePages.vue";
 import Login from "./components/authentication/Login.vue";
 import Register from "./components/authentication/Register.vue";
 import About from './components/pages/About.vue';
+import Feed from './components/Feed.vue';
 
 Vue.use(VueRouter);
 
@@ -15,6 +16,13 @@ const router = new VueRouter({
             component: HomePage,
             meta:{
                 forVisitors: true
+            }
+        },
+        {
+            path: "/feed",
+            component: Feed,
+            meta:{
+                forAuth: true
             }
         },
         {
@@ -30,7 +38,6 @@ const router = new VueRouter({
             meta: {
                 forVisitors: true
             }
-
         },
         {
             path: "/register",
