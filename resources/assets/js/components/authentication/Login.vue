@@ -16,7 +16,7 @@
                            class="form-control"
                            placeholder="Password">
                 </div>
-                <p>user: hstanton@example.com</p>
+                <p>user: gbelot2003@hotmail.com</p>
                 <p>pass: secret</p>
 
                 <button class="btn btn-success" @click="login">Login</button>
@@ -30,7 +30,7 @@
     export default {
         data () {
             return {
-                email: '',
+                email: 'gbelot2003@hotmail.com',
                 password: '',
                 body: {},
             }
@@ -39,7 +39,7 @@
             login () {
                 let data = {
                     client_id: 2,
-                    client_secret: 'j0KeeM8QIJor0GI5AVxsY5nhEpOhdm06BxQA97Sw',
+                    client_secret: 'yduFRs5MMMx5PUIkWS8Ynujz5f06zdxq2AQZIno7',
                     grant_type: 'password',
                     username: this.email,
                     password: this.password,

@@ -46367,7 +46367,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            email: '',
+            email: 'gbelot2003@hotmail.com',
             password: '',
             body: {}
         };
@@ -46379,7 +46379,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             var data = {
                 client_id: 2,
-                client_secret: 'j0KeeM8QIJor0GI5AVxsY5nhEpOhdm06BxQA97Sw',
+                client_secret: 'yduFRs5MMMx5PUIkWS8Ynujz5f06zdxq2AQZIno7',
                 grant_type: 'password',
                 username: this.email,
                 password: this.password
@@ -46457,7 +46457,7 @@ var render = function() {
           })
         ]),
         _vm._v(" "),
-        _c("p", [_vm._v("user: hstanton@example.com")]),
+        _c("p", [_vm._v("user: gbelot2003@hotmail.com")]),
         _vm._v(" "),
         _c("p", [_vm._v("pass: secret")]),
         _vm._v(" "),
@@ -46733,12 +46733,6 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
 //
 //
 //
