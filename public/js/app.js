@@ -43552,7 +43552,7 @@ var router = new __WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]({
         path: "/about",
         component: __WEBPACK_IMPORTED_MODULE_5__components_pages_About_vue___default.a,
         meta: {
-            forAuth: true
+            forAuth: false
         }
     }, {
         path: "/login",

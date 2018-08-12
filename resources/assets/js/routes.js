@@ -21,7 +21,7 @@ const router = new VueRouter({
             path: "/about",
             component: About,
             meta:{
-                forAuth: true
+                forAuth: false
             }
         },
         {
