@@ -2,11 +2,24 @@
     <div class="header clearfix">
         <nav>
             <ul class="nav nav-pills pull-right">
-                <li role="presentation"><router-link :data-active="true" data-exact="true"  to="/">Home</router-link></li>
-                <li role="presentation"><router-link data-active="true" data-exact="true" to="/login">Login</router-link></li>
-                <li role="presentation"><router-link data-active="true" data-exact="true" to="/register">Register</router-link></li>
-                <li role="presentation"><router-link data-active="true" data-exact="true" to="/feed">Feed</router-link></li>
-                <li role="presentation"><router-link data-active="true" data-exact="true" to="/about">About</router-link></li>
+                <router-link tag="li"  to="/">
+                    <a>Home</a>
+                </router-link>
+                <router-link tag="li" to="/login">
+                    <a>Login</a>
+                </router-link>
+                <router-link tag="li" to="/register">
+                    <a>Register</a>
+                </router-link>
+                <router-link tag="li" to="/feed">
+                    <a>Feed</a>
+                </router-link>
+                <router-link tag="li" to="/about">
+                    <a>About</a>
+                </router-link>
+                <router-link tag="li" to="/contact">
+                    <a>Contact</a>
+                </router-link>
             </ul>
         </nav>
         <h3 class="text-muted">Aplication Test</h3>
@@ -16,9 +29,3 @@
 <script>
     export default {}
 </script>
-
-<style>
-    .router-link-exact-active {
-        color: #f00
-    }
-</style>

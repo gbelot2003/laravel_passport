@@ -1,9 +1,7 @@
 <template>
-
         <div class="col-md-4">
             <div class="thumbnail">
                 <img src="/images/download.jpeg">
-
                 <div class="caption">
                     <h3><strong>{{ product.name }}</strong></h3>
                     <p>{{ product.price }}</p>
@@ -19,7 +17,6 @@
                 </div>
             </div>
         </div>
-
 </template>
 
 <script>

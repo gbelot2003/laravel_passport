@@ -43663,10 +43663,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
-  __webpack_require__(47)
-}
 var normalizeComponent = __webpack_require__(1)
 /* script */
 var __vue_script__ = __webpack_require__(49)
@@ -43675,7 +43671,7 @@ var __vue_template__ = __webpack_require__(50)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
-var __vue_styles__ = injectStyle
+var __vue_styles__ = null
 /* scopeId */
 var __vue_scopeId__ = null
 /* moduleIdentifier (server only) */
@@ -43710,51 +43706,26 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 47 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(48);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(12)("b4fa1386", content, false, {});
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-5afe0687\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./NabNar.vue", function() {
-     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-5afe0687\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./NabNar.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 48 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(11)(false);
-// imports
-
-
-// module
-exports.push([module.i, "\n.router-link-exact-active {\n    color: #f00\n}\n", ""]);
-
-// exports
-
-
-/***/ }),
+/* 47 */,
+/* 48 */,
 /* 49 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -43783,96 +43754,36 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "header clearfix" }, [
     _c("nav", [
-      _c("ul", { staticClass: "nav nav-pills pull-right" }, [
-        _c(
-          "li",
-          { attrs: { role: "presentation" } },
-          [
-            _c(
-              "router-link",
-              { attrs: { "data-active": true, "data-exact": "true", to: "/" } },
-              [_vm._v("Home")]
-            )
-          ],
-          1
-        ),
-        _vm._v(" "),
-        _c(
-          "li",
-          { attrs: { role: "presentation" } },
-          [
-            _c(
-              "router-link",
-              {
-                attrs: {
-                  "data-active": "true",
-                  "data-exact": "true",
-                  to: "/login"
-                }
-              },
-              [_vm._v("Login")]
-            )
-          ],
-          1
-        ),
-        _vm._v(" "),
-        _c(
-          "li",
-          { attrs: { role: "presentation" } },
-          [
-            _c(
-              "router-link",
-              {
-                attrs: {
-                  "data-active": "true",
-                  "data-exact": "true",
-                  to: "/register"
-                }
-              },
-              [_vm._v("Register")]
-            )
-          ],
-          1
-        ),
-        _vm._v(" "),
-        _c(
-          "li",
-          { attrs: { role: "presentation" } },
-          [
-            _c(
-              "router-link",
-              {
-                attrs: {
-                  "data-active": "true",
-                  "data-exact": "true",
-                  to: "/feed"
-                }
-              },
-              [_vm._v("Feed")]
-            )
-          ],
-          1
-        ),
-        _vm._v(" "),
-        _c(
-          "li",
-          { attrs: { role: "presentation" } },
-          [
-            _c(
-              "router-link",
-              {
-                attrs: {
-                  "data-active": "true",
-                  "data-exact": "true",
-                  to: "/about"
-                }
-              },
-              [_vm._v("About")]
-            )
-          ],
-          1
-        )
-      ])
+      _c(
+        "ul",
+        { staticClass: "nav nav-pills pull-right" },
+        [
+          _c("router-link", { attrs: { tag: "li", to: "/" } }, [
+            _c("a", [_vm._v("Home")])
+          ]),
+          _vm._v(" "),
+          _c("router-link", { attrs: { tag: "li", to: "/login" } }, [
+            _c("a", [_vm._v("Login")])
+          ]),
+          _vm._v(" "),
+          _c("router-link", { attrs: { tag: "li", to: "/register" } }, [
+            _c("a", [_vm._v("Register")])
+          ]),
+          _vm._v(" "),
+          _c("router-link", { attrs: { tag: "li", to: "/feed" } }, [
+            _c("a", [_vm._v("Feed")])
+          ]),
+          _vm._v(" "),
+          _c("router-link", { attrs: { tag: "li", to: "/about" } }, [
+            _c("a", [_vm._v("About")])
+          ]),
+          _vm._v(" "),
+          _c("router-link", { attrs: { tag: "li", to: "/contact" } }, [
+            _c("a", [_vm._v("Contact")])
+          ])
+        ],
+        1
+      )
     ]),
     _vm._v(" "),
     _c("h3", { staticClass: "text-muted" }, [_vm._v("Aplication Test")])
@@ -43931,6 +43842,9 @@ if (false) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_pages_About_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__components_pages_About_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_Feed_vue__ = __webpack_require__(66);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_Feed_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__components_Feed_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_Contact_vue__ = __webpack_require__(93);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_Contact_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__components_Contact_vue__);
+
 
 
 
@@ -43967,13 +43881,23 @@ var router = new __WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]({
         meta: {
             forVisitors: true
         }
+
     }, {
         path: "/register",
         component: __WEBPACK_IMPORTED_MODULE_4__components_authentication_Register_vue___default.a,
         meta: {
             forAuth: true
         }
-    }]
+    }, {
+        path: "/contact",
+        component: __WEBPACK_IMPORTED_MODULE_7__components_Contact_vue___default.a,
+        meta: {
+            forVisitors: true
+        }
+
+    }],
+
+    linkExactActiveClass: 'active'
 });
 
 /* harmony default export */ __webpack_exports__["a"] = (router);
@@ -49140,9 +49064,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['product']
@@ -49236,6 +49157,86 @@ exports.push([module.i, "\n.thumbnail {\n    background-color: #ffead7;\n}\n", "
 
 // exports
 
+
+/***/ }),
+/* 93 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(94)
+/* template */
+var __vue_template__ = __webpack_require__(95)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/Contact.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-43b63039", Component.options)
+  } else {
+    hotAPI.reload("data-v-43b63039", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 94 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({});
+
+/***/ }),
+/* 95 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("h1", [_vm._v("Contact")])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-43b63039", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

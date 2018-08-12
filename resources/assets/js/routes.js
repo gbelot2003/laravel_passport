@@ -6,6 +6,8 @@ import Login from "./components/authentication/Login.vue";
 import Register from "./components/authentication/Register.vue";
 import About from './components/pages/About.vue';
 import Feed from './components/Feed.vue';
+import Contact from './components/Contact.vue';
+
 
 Vue.use(VueRouter);
 
@@ -32,12 +34,14 @@ const router = new VueRouter({
                 forAuth: true
             }
         },
+
         {
             path: "/login",
             component: Login,
             meta: {
                 forVisitors: true
             }
+
         },
         {
             path: "/register",
@@ -45,8 +49,18 @@ const router = new VueRouter({
             meta: {
                 forAuth: true
             }
-        }
-    ]
+        },
+        {
+            path: "/contact",
+            component: Contact,
+            meta: {
+                forVisitors: true
+            }
+
+        },
+    ],
+
+    linkExactActiveClass : 'active'
 });
 
 export default router
