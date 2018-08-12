@@ -2,14 +2,13 @@ require('./bootstrap');
 import Vue from 'vue'
 import App from './App.vue';
 import Router from './routes.js';
-import Auth from './packages/auth/auth';
 import VueResource from 'vue-resource';
+import Auth from './packages/auth/auth';
 
-
-Vue.use(VueResource);
 Vue.use(Auth);
+Vue.use(VueResource);
 
-
+Vue.http.headers.common['Authorization'] = 'Bearer ' + Vue.auth.getToken();
 
 Router.beforeEach(
     (to, from, next) => {

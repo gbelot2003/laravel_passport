@@ -12362,8 +12362,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__App_vue__ = __webpack_require__(41);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__App_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__App_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__routes_js__ = __webpack_require__(52);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__packages_auth_auth__ = __webpack_require__(69);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vue_resource__ = __webpack_require__(70);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vue_resource__ = __webpack_require__(70);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__packages_auth_auth__ = __webpack_require__(69);
 __webpack_require__(15);
 
 
@@ -12371,8 +12371,10 @@ __webpack_require__(15);
 
 
 
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_4_vue_resource__["a" /* default */]);
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3__packages_auth_auth__["a" /* default */]);
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_4__packages_auth_auth__["a" /* default */]);
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_3_vue_resource__["a" /* default */]);
+
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.http.headers.common['Authorization'] = 'Bearer ' + __WEBPACK_IMPORTED_MODULE_0_vue___default.a.auth.getToken();
 
 __WEBPACK_IMPORTED_MODULE_2__routes_js__["a" /* default */].beforeEach(function (to, from, next) {
     if (to.matched.some(function (record) {
@@ -47224,6 +47226,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -47232,7 +47241,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         };
     },
     created: function created() {
-        this.$http.get('/api/products');
+        var _this = this;
+
+        this.$http.get('/api/products').then(function (response) {
+            _this.products = response.body;
+        });
     }
 });
 
@@ -47244,7 +47257,24 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("h1", [_vm._v("Feed")])
+  return _c("div", [
+    _c("h1", [_vm._v("Feed")]),
+    _vm._v(" "),
+    _c(
+      "ul",
+      _vm._l(_vm.products, function(product) {
+        return _c("li", [
+          _vm._v(
+            "\n            " +
+              _vm._s(product.name) +
+              " | " +
+              _vm._s(product.price) +
+              "\n        "
+          )
+        ])
+      })
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
