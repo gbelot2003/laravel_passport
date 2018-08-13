@@ -9,7 +9,7 @@ import Feed from './components/Feed.vue';
 import Edit from './components/product/Edit';
 import Contact from './components/Contact.vue';
 
-
+-watch-poll
 Vue.use(VueRouter);
 
 const router = new VueRouter({
