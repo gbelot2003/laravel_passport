@@ -21,6 +21,7 @@
                         >
                             Borrar
                         </a>
+                        <router-link class="btn btn-warning" :to="'/products/' + product.id + '/edit'">Edit</router-link>
                     </p>
                 </div>
             </div>

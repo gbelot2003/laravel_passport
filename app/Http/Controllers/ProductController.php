@@ -12,7 +12,7 @@ class ProductController extends Controller
 
     public function index()
     {
-        return Product::all();
+        return Product::orderBy('id','DESC')->get();
     }
 
     public function store(Request $request)
@@ -21,6 +21,20 @@ class ProductController extends Controller
         $product = Product::create($request->all());
 
         return $product;
+    }
+
+    public function show($id)
+    {
+        $product = Product::findOrFail($id);
+        return response()->json($product, 200);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $product = Product::findOrFail($id);
+        $product->update($request->all());
+
+        return response()->json($product, 200);
     }
 
     public function destroy($id)

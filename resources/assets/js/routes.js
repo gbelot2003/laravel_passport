@@ -6,6 +6,7 @@ import Login from "./components/authentication/Login.vue";
 import Register from "./components/authentication/Register.vue";
 import About from './components/pages/About.vue';
 import Feed from './components/Feed.vue';
+import Edit from './components/product/Edit';
 import Contact from './components/Contact.vue';
 
 
@@ -34,6 +35,14 @@ const router = new VueRouter({
                 forAuth: true
             }
         },
+        {
+            path: "/products/:product/edit",
+            component: Edit,
+            meta:{
+                forAuth: true
+            }
+        },
+
         {
             path: "/about",
             component: About,
