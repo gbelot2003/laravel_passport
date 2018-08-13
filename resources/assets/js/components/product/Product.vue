@@ -3,7 +3,6 @@
             <div class="thumbnail">
                 <img src="/images/download.jpeg">
                 <div class="caption">
-                    {{ product.user_id }}
                     <h3><strong>{{ product.name }}</strong></h3>
                     <p>{{ product.price }}</p>
                     <hr>
@@ -17,7 +16,9 @@
                     </p>
                     <hr />
                     <p  v-if="product.user_id == authenticateUser.id">
-                        <a href="#" class="btn btn-danger" role="button">
+                        <a href="#" class="btn btn-danger" role="button"
+                        @click="$emit('delete-product')"
+                        >
                             Borrar
                         </a>
                     </p>
@@ -28,7 +29,7 @@
 
 <script>
     export default {
-        props: ['product', 'authenticateUser']
+        props: ['product', 'authenticateUser'],
     }
 </script>
 

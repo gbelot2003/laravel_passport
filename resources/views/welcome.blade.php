@@ -4,6 +4,8 @@
     <meta charset="utf-8">
     <title>front</title>
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.26.11/sweetalert2.min.css">
+
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
 </head>
