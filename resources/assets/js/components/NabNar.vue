@@ -5,19 +5,19 @@
                 <router-link tag="li"  to="/">
                     <a>Home</a>
                 </router-link>
-                <router-link tag="li" to="/login">
+                <router-link tag="li" to="/login" v-if="! isAuth">
                     <a>Login</a>
                 </router-link>
-                <router-link tag="li" to="/register">
+                <router-link tag="li" to="/register" v-if="isAuth">
                     <a>Register</a>
                 </router-link>
-                <router-link tag="li" to="/feed">
+                <router-link tag="li" to="/feed" v-if="isAuth">
                     <a>Feed</a>
                 </router-link>
-                <router-link tag="li" to="/about">
+                <router-link tag="li" to="/about" v-if="isAuth">
                     <a>About</a>
                 </router-link>
-                <router-link tag="li" to="/contact">
+                <router-link tag="li" to="/contact" v-if="! isAuth">
                     <a>Contact</a>
                 </router-link>
             </ul>
@@ -27,5 +27,16 @@
 </template>
 
 <script>
-    export default {}
+    export default {
+        data () {
+            return {
+                isAuth: null
+            }
+        },
+
+        created(){
+            this.isAuth = this.$auth.isAuthenticate();
+        }
+
+    }
 </script>
