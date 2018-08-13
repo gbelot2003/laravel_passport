@@ -36,6 +36,17 @@
 
         created(){
             this.isAuth = this.$auth.isAuthenticate();
+            this.setAuthenticatedUser();
+        },
+
+        methods:{
+            setAuthenticatedUser(){
+                this.$http.get('api/user')
+                    .then(response => {
+                        this.$auth.setAuthenticatedUser(response.body);
+                        //console.log(this.$auth.getAuthenticatedUser());
+                    });
+            }
         }
 
     }

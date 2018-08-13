@@ -43750,7 +43750,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     created: function created() {
         this.isAuth = this.$auth.isAuthenticate();
+        this.setAuthenticatedUser();
+    },
+
+
+    methods: {
+        setAuthenticatedUser: function setAuthenticatedUser() {
+            var _this = this;
+
+            this.$http.get('api/user').then(function (response) {
+                _this.$auth.setAuthenticatedUser(response.body);
+                //console.log(this.$auth.getAuthenticatedUser());
+            });
+        }
     }
+
 });
 
 /***/ }),
@@ -47220,6 +47234,8 @@ if (false) {
 
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = (function (Vue) {
+    var authenticatedUser = {};
+
     Vue.auth = {
         setToken: function setToken(token, expiration) {
             localStorage.setItem('token', token);
@@ -47246,8 +47262,15 @@ if (false) {
             if (this.getToken()) {
                 return true;
             } else return false;
+        },
+        setAuthenticatedUser: function setAuthenticatedUser(data) {
+            authenticatedUser = data;
+        },
+        getAuthenticatedUser: function getAuthenticatedUser() {
+            return authenticatedUser;
         }
     };
+
     Object.defineProperties(Vue.prototype, {
         $auth: {
             get: function get() {
@@ -48989,7 +49012,7 @@ exports = module.exports = __webpack_require__(11)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -49013,13 +49036,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            products: []
+            products: [],
+            authenticateUser: this.$auth.getAuthenticatedUser()
         };
     },
 
@@ -49048,7 +49076,14 @@ var render = function() {
     "div",
     { staticClass: "row" },
     _vm._l(_vm.products, function(product) {
-      return _c("my-product", { attrs: { product: product } })
+      return _c("my-product", {
+        key: _vm.products.id,
+        attrs: {
+          data: _vm.products,
+          product: product,
+          authenticatedUser: _vm.authenticateUser
+        }
+      })
     })
   )
 }
@@ -49089,9 +49124,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['product']
+    props: ['product', 'authenticateUser']
 });
 
 /***/ }),
@@ -49107,6 +49143,9 @@ var render = function() {
       _c("img", { attrs: { src: "/images/download.jpeg" } }),
       _vm._v(" "),
       _c("div", { staticClass: "caption" }, [
+        _vm._v(
+          "\n            " + _vm._s(_vm.product.user_id) + "\n            "
+        ),
         _c("h3", [_c("strong", [_vm._v(_vm._s(_vm.product.name))])]),
         _vm._v(" "),
         _c("p", [_vm._v(_vm._s(_vm.product.price))]),

@@ -2,7 +2,11 @@
 
         <div class="row">
             <my-product v-for="product in products"
-                        :product="product"
+                        v-bind:data="products"
+                        v-bind:key="products.id" :product="product"
+                        :authenticatedUser="authenticateUser"
+
+
             >
             </my-product>
         </div>
@@ -15,7 +19,8 @@
     export default {
         data(){
             return {
-                products: []
+                products: [],
+                authenticateUser: this.$auth.getAuthenticatedUser(),
             }
         },
         components:{

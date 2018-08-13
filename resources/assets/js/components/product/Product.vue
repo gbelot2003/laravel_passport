@@ -3,6 +3,7 @@
             <div class="thumbnail">
                 <img src="/images/download.jpeg">
                 <div class="caption">
+                    {{ product.user_id }}
                     <h3><strong>{{ product.name }}</strong></h3>
                     <p>{{ product.price }}</p>
                     <hr>
@@ -21,7 +22,7 @@
 
 <script>
     export default {
-        props: ['product']
+        props: ['product', 'authenticateUser']
     }
 </script>
 
