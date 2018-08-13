@@ -15,6 +15,12 @@
                             Buy there
                         </a>
                     </p>
+                    <hr />
+                    <p  v-if="product.user_id == authenticateUser.id">
+                        <a href="#" class="btn btn-danger" role="button">
+                            Borrar
+                        </a>
+                    </p>
                 </div>
             </div>
         </div>

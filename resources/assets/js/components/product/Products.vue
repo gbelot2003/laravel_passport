@@ -5,8 +5,7 @@
                         v-bind:data="products"
                         v-bind:key="products.id" :product="product"
                         :authenticatedUser="authenticateUser"
-
-
+                        v-bind:authenticateUser="authenticateUser"
             >
             </my-product>
         </div>

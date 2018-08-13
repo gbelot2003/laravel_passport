@@ -49012,7 +49012,7 @@ exports = module.exports = __webpack_require__(11)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -49025,7 +49025,6 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Product__ = __webpack_require__(83);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Product___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Product__);
-//
 //
 //
 //
@@ -49081,7 +49080,8 @@ var render = function() {
         attrs: {
           data: _vm.products,
           product: product,
-          authenticatedUser: _vm.authenticateUser
+          authenticatedUser: _vm.authenticateUser,
+          authenticateUser: _vm.authenticateUser
         }
       })
     })
@@ -49103,6 +49103,12 @@ if (false) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -49152,7 +49158,22 @@ var render = function() {
         _vm._v(" "),
         _c("hr"),
         _vm._v(" "),
-        _vm._m(0)
+        _vm._m(0),
+        _vm._v(" "),
+        _c("hr"),
+        _vm._v(" "),
+        _vm.product.user_id == _vm.authenticateUser.id
+          ? _c("p", [
+              _c(
+                "a",
+                {
+                  staticClass: "btn btn-danger",
+                  attrs: { href: "#", role: "button" }
+                },
+                [_vm._v("\n                    Borrar\n                ")]
+              )
+            ])
+          : _vm._e()
       ])
     ])
   ])
