@@ -1,7 +1,7 @@
 /node_modules
 /public/hot
 /public/storage
-resources/assets/js/env.js
+/resources/assets/js/env.js
 /storage/*.key
 /vendor
 /.idea
