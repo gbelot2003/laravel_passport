@@ -1,14 +1,19 @@
 require('./bootstrap');
 import Vue from 'vue'
 import App from './App.vue';
+import Vuex from 'vuex';
 import Router from './routes.js';
 import VueResource from 'vue-resource';
 import Vuetify from 'vuetify'
 import Auth from './packages/auth/auth';
+import StoreData from './store';
 
 Vue.use(Auth);
 Vue.use(VueResource);
 Vue.use(Vuetify);
+Vue.use(Vuex);
+
+const store = new Vuex.Store(StoreData);
 
 Vue.http.headers.common['Authorization'] = 'Bearer ' + Vue.auth.getToken();
 
@@ -34,5 +39,6 @@ Router.beforeEach(
 new Vue({
     el: '#app',
     render: h => h(App),
-    router: Router
+    router: Router,
+    store
 });

@@ -1,10 +1,10 @@
 <template>
-    <v-flex xs4>
+    <v-flex xs3>
         <v-card dark color="primary">
             <v-card-media src="/images/download.jpeg"  height="50px" witdh="100px"></v-card-media>
             <v-card-title primary-title>
-                <div>
-                    <h3><strong>{{ product.name }} | {{ product.user_id }} | {{ authenticateUser }}</strong></h3>
+                <div class="contenedor">
+                    <h3><strong>{{ product.name }} </strong></h3>
                     <p>{{ product.price }}</p>
                     <hr>
                     <p>
@@ -36,5 +36,9 @@
 <style>
     .thumbnail {
         background-color: #ffead7;
+    }
+
+    .contenedor{
+        width: 100%;
     }
 </style>
