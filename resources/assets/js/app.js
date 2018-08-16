@@ -10,9 +10,11 @@ import Router from './routes.js';
 import App from './App.vue';
 import Auth from './packages/auth/auth';
 import VueResource from 'vue-resource';
+import Vuetify from 'vuetify'
 
 Vue.use(VueResource);
 Vue.use(Auth);
+Vue.use(Vuetify);
 
 Router.beforeEach(
     (to, from, next) => {

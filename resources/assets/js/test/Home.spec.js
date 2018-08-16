@@ -1,10 +1,11 @@
-import mont from '@vue/test-utils';
+import {mount} from '@vue/test-utils';
 import Home from '../components/pages/HomePages.vue';
 
 describe('Home', () => {
     it('render correcly', () => {
-        const wrapper = mont(Home);
-        expect(wrapper.find('h1')).toContain('Aplicaction Test');
+        const wrapper = mount(Home);
+        expect(wrapper.text()).not.toBe('dar');
+        expect(wrapper.find('h1').text()).toContain('Aplicaction Test');
 
     })
 });
