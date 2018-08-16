@@ -26,6 +26,7 @@
         "laravel-mix": "^1.0",
         "lodash": "^4.17.4",
         "material-design-icons-iconfont": "^3.0.3",
+        "moxios": "^0.4.0",
         "stylus-loader": "^3.0.2",
         "vue": "^2.5.7",
         "vue-jest": "^2.6.0",

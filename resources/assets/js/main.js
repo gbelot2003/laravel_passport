@@ -3,10 +3,12 @@ import Vue from 'vue'
 import App from './App.vue';
 import Router from './routes.js';
 import VueResource from 'vue-resource';
+import Vuetify from 'vuetify'
 import Auth from './packages/auth/auth';
 
 Vue.use(Auth);
 Vue.use(VueResource);
+Vue.use(Vuetify);
 
 Vue.http.headers.common['Authorization'] = 'Bearer ' + Vue.auth.getToken();
 
