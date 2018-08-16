@@ -1,9 +1,10 @@
 <template>
-        <div class="col-md-4">
-            <div class="thumbnail">
-                <img src="/images/download.jpeg">
-                <div class="caption">
-                    <h3><strong>{{ product.name }}</strong></h3>
+    <v-flex xs4>
+        <v-card dark color="primary">
+            <v-card-media src="/images/download.jpeg"  height="50px" witdh="100px"></v-card-media>
+            <v-card-title primary-title>
+                <div>
+                    <h3><strong>{{ product.name }} | {{ product.user_id }} | {{ authenticateUser }}</strong></h3>
                     <p>{{ product.price }}</p>
                     <hr>
                     <p>
@@ -15,17 +16,15 @@
                         </a>
                     </p>
                     <hr />
-                    <p  v-if="product.user_id == authenticateUser.id">
-                        <a href="#" class="btn btn-danger" role="button"
-                        @click="$emit('delete-product')"
-                        >
-                            Borrar
-                        </a>
-                        <router-link class="btn btn-warning" :to="'/products/' + product.id + '/edit'">Edit</router-link>
-                    </p>
+
                 </div>
-            </div>
-        </div>
+            </v-card-title>
+            <v-card-actions v-show="product.user_id == authenticateUser.id">
+                <v-btn flat color="orange" @click="$emit('delete-product')">Borrar</v-btn>
+                <router-link class="btn btn-warning" :to="'/products/' + product.id + '/edit'">Edit</router-link>
+            </v-card-actions>
+        </v-card>
+    </v-flex>
 </template>
 
 <script>

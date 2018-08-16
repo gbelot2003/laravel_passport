@@ -16476,29 +16476,8 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _data$props$props$com;
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var _NabNar = __webpack_require__(102);
-
-var _NabNar2 = _interopRequireDefault(_NabNar);
-
-var _Toolbar = __webpack_require__(105);
-
-var _Toolbar2 = _interopRequireDefault(_Toolbar);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; } //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -16549,7 +16528,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 
-exports.default = (_data$props$props$com = {
+exports.default = _defineProperty({
     data: function data() {
         return {
             drawer: false
@@ -16560,9 +16539,9 @@ exports.default = (_data$props$props$com = {
         source: String
 
     }
-}, _defineProperty(_data$props$props$com, 'props', {
+}, "props", {
     source: String
-}), _defineProperty(_data$props$props$com, 'components', { Navbar: _NabNar2.default, Toolbar: _Toolbar2.default }), _data$props$props$com);
+});
 
 /***/ }),
 /* 30 */
@@ -16667,66 +16646,7 @@ var render = function() {
                   _c(
                     "v-flex",
                     { attrs: { "text-xs-center": "" } },
-                    [
-                      _c(
-                        "v-tooltip",
-                        { attrs: { left: "" } },
-                        [
-                          _c(
-                            "v-btn",
-                            {
-                              attrs: {
-                                slot: "activator",
-                                href: _vm.source,
-                                icon: "",
-                                large: "",
-                                target: "_blank"
-                              },
-                              slot: "activator"
-                            },
-                            [
-                              _c("v-icon", { attrs: { large: "" } }, [
-                                _vm._v("code")
-                              ])
-                            ],
-                            1
-                          ),
-                          _vm._v(" "),
-                          _c("span", [_vm._v("Source")])
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-tooltip",
-                        { attrs: { right: "" } },
-                        [
-                          _c(
-                            "v-btn",
-                            {
-                              attrs: {
-                                slot: "activator",
-                                icon: "",
-                                large: "",
-                                href:
-                                  "https://codepen.io/johnjleider/pen/BYqXgr",
-                                target: "_blank"
-                              },
-                              slot: "activator"
-                            },
-                            [
-                              _c("v-icon", { attrs: { large: "" } }, [
-                                _vm._v("mdi-codepen")
-                              ])
-                            ],
-                            1
-                          ),
-                          _vm._v(" "),
-                          _c("span", [_vm._v("Codepen")])
-                        ],
-                        1
-                      )
-                    ],
+                    [_c("router-view")],
                     1
                   )
                 ],
@@ -20254,11 +20174,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
-//
-//
-//
-//
-//
 
 exports.default = {
     data: function data() {
@@ -20442,7 +20357,6 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
-//
 
 exports.default = {
     props: ['product', 'authenticateUser']
@@ -20456,71 +20370,111 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "col-md-4" }, [
-    _c("div", { staticClass: "thumbnail" }, [
-      _c("img", { attrs: { src: "/images/download.jpeg" } }),
-      _vm._v(" "),
-      _c("div", { staticClass: "caption" }, [
-        _c("h3", [_c("strong", [_vm._v(_vm._s(_vm.product.name))])]),
-        _vm._v(" "),
-        _c("p", [_vm._v(_vm._s(_vm.product.price))]),
-        _vm._v(" "),
-        _c("hr"),
-        _vm._v(" "),
-        _vm._m(0),
-        _vm._v(" "),
-        _c("hr"),
-        _vm._v(" "),
-        _vm.product.user_id == _vm.authenticateUser.id
-          ? _c(
-              "p",
-              [
+  return _c(
+    "v-flex",
+    { attrs: { xs4: "" } },
+    [
+      _c(
+        "v-card",
+        { attrs: { dark: "", color: "primary" } },
+        [
+          _c("v-card-media", {
+            attrs: {
+              src: "/images/download.jpeg",
+              height: "50px",
+              witdh: "100px"
+            }
+          }),
+          _vm._v(" "),
+          _c("v-card-title", { attrs: { "primary-title": "" } }, [
+            _c("div", [
+              _c("h3", [
+                _c("strong", [
+                  _vm._v(
+                    _vm._s(_vm.product.name) +
+                      " | " +
+                      _vm._s(_vm.product.user_id) +
+                      " | " +
+                      _vm._s(_vm.authenticateUser)
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("p", [_vm._v(_vm._s(_vm.product.price))]),
+              _vm._v(" "),
+              _c("hr"),
+              _vm._v(" "),
+              _c("p", [
                 _c(
                   "a",
-                  {
-                    staticClass: "btn btn-danger",
-                    attrs: { href: "#", role: "button" },
-                    on: {
-                      click: function($event) {
-                        _vm.$emit("delete-product")
-                      }
-                    }
-                  },
-                  [_vm._v("\n                    Borrar\n                ")]
+                  { staticClass: "btn btn-default", attrs: { href: "#" } },
+                  [
+                    _vm._v(
+                      "\n                        Wish List\n                    "
+                    )
+                  ]
                 ),
                 _vm._v(" "),
                 _c(
-                  "router-link",
-                  {
-                    staticClass: "btn btn-warning",
-                    attrs: { to: "/products/" + _vm.product.id + "/edit" }
-                  },
-                  [_vm._v("Edit")]
+                  "a",
+                  { staticClass: "btn btn-success", attrs: { href: "#" } },
+                  [
+                    _vm._v(
+                      "\n                        Buy there\n                    "
+                    )
+                  ]
                 )
-              ],
-              1
-            )
-          : _vm._e()
-      ])
-    ])
-  ])
+              ]),
+              _vm._v(" "),
+              _c("hr")
+            ])
+          ]),
+          _vm._v(" "),
+          _c(
+            "v-card-actions",
+            {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: _vm.product.user_id == _vm.authenticateUser.id,
+                  expression: "product.user_id == authenticateUser.id"
+                }
+              ]
+            },
+            [
+              _c(
+                "v-btn",
+                {
+                  attrs: { flat: "", color: "orange" },
+                  on: {
+                    click: function($event) {
+                      _vm.$emit("delete-product")
+                    }
+                  }
+                },
+                [_vm._v("Borrar")]
+              ),
+              _vm._v(" "),
+              _c(
+                "router-link",
+                {
+                  staticClass: "btn btn-warning",
+                  attrs: { to: "/products/" + _vm.product.id + "/edit" }
+                },
+                [_vm._v("Edit")]
+              )
+            ],
+            1
+          )
+        ],
+        1
+      )
+    ],
+    1
+  )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("p", [
-      _c("a", { staticClass: "btn btn-default", attrs: { href: "#" } }, [
-        _vm._v("\n                    Wish List\n                ")
-      ]),
-      _vm._v(" "),
-      _c("a", { staticClass: "btn btn-success", attrs: { href: "#" } }, [
-        _vm._v("\n                    Buy there\n                ")
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -20539,31 +20493,24 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "div",
-    { staticClass: "row" },
-    [
-      _vm._l(_vm.products, function(product, index) {
-        return _c("my-product", {
-          key: _vm.products.id,
-          attrs: {
-            authenticatedUser: _vm.authenticateUser,
-            authenticateUser: _vm.authenticateUser,
-            data: _vm.products,
-            product: product
-          },
-          on: {
-            "delete-product": function($event) {
-              _vm.deleteProduct(product)
-            }
+    "v-layout",
+    { attrs: { row: "", wrap: "" } },
+    _vm._l(_vm.products, function(product, index) {
+      return _c("my-product", {
+        key: _vm.products.id,
+        attrs: {
+          authenticatedUser: _vm.authenticateUser,
+          authenticateUser: _vm.authenticateUser,
+          data: _vm.products,
+          product: product
+        },
+        on: {
+          "delete-product": function($event) {
+            _vm.deleteProduct(product)
           }
-        })
-      }),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-12" }, [
-        _vm._v("\n        " + _vm._s(_vm.$data) + "\n    ")
-      ])
-    ],
-    2
+        }
+      })
+    })
   )
 }
 var staticRenderFns = []
@@ -71384,303 +71331,6 @@ module.exports = __WEBPACK_EXTERNAL_MODULE_vue__;
 /******/ })["default"];
 });
 //# sourceMappingURL=vuetify.js.map
-
-/***/ }),
-/* 102 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(1)
-/* script */
-var __vue_script__ = __webpack_require__(103)
-/* template */
-var __vue_template__ = __webpack_require__(104)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/assets/js/components/NabNar.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-5afe0687", Component.options)
-  } else {
-    hotAPI.reload("data-v-5afe0687", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 103 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-exports.default = {
-    data: function data() {
-        return {
-            isAuth: null,
-            data: function data() {
-                return {
-                    drawer: null
-                };
-            }
-        };
-    },
-    created: function created() {
-        this.isAuth = this.$auth.isAuthenticate();
-        this.setAuthenticatedUser();
-    },
-
-
-    methods: {
-        setAuthenticatedUser: function setAuthenticatedUser() {
-            var _this = this;
-
-            this.$http.get('api/user').then(function (response) {
-                _this.$auth.setAuthenticatedUser(response.body);
-                //console.log(this.$auth.getAuthenticatedUser());
-            });
-        }
-    }
-
-};
-
-/***/ }),
-/* 104 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "v-navigation-drawer",
-    {
-      attrs: { fixed: "", right: "", app: "" },
-      model: {
-        value: _vm.drawer,
-        callback: function($$v) {
-          _vm.drawer = $$v
-        },
-        expression: "drawer"
-      }
-    },
-    [
-      _c(
-        "v-list",
-        { attrs: { dense: "" } },
-        [
-          _c(
-            "v-list-tile",
-            { on: { click: function($event) {} } },
-            [
-              _c("v-list-tile-action", [_c("v-icon", [_vm._v("home")])], 1),
-              _vm._v(" "),
-              _c(
-                "v-list-tile-content",
-                [_c("v-list-tile-title", [_vm._v("Home")])],
-                1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "v-list-tile",
-            { on: { click: function($event) {} } },
-            [
-              _c(
-                "v-list-tile-action",
-                [_c("v-icon", [_vm._v("contact_mail")])],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "v-list-tile-content",
-                [_c("v-list-tile-title", [_vm._v("Contact")])],
-                1
-              )
-            ],
-            1
-          )
-        ],
-        1
-      )
-    ],
-    1
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-5afe0687", module.exports)
-  }
-}
-
-/***/ }),
-/* 105 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(1)
-/* script */
-var __vue_script__ = __webpack_require__(106)
-/* template */
-var __vue_template__ = __webpack_require__(107)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/assets/js/components/Toolbar.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-a4fd1bd8", Component.options)
-  } else {
-    hotAPI.reload("data-v-a4fd1bd8", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 106 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-//
-//
-//
-//
-//
-//
-//
-//
-
-exports.default = {};
-
-/***/ }),
-/* 107 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "v-toolbar",
-    { attrs: { color: "cyan", dark: "", fixed: "", app: "" } },
-    [
-      _c("v-spacer"),
-      _vm._v(" "),
-      _c("v-toolbar-title", [_vm._v("Application")]),
-      _vm._v(" "),
-      _c("v-toolbar-side-icon", {
-        on: {
-          click: function($event) {
-            $event.stopPropagation()
-            _vm.drawer = !_vm.drawer
-          }
-        }
-      })
-    ],
-    1
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-a4fd1bd8", module.exports)
-  }
-}
 
 /***/ })
 /******/ ]);

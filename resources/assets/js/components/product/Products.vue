@@ -1,6 +1,5 @@
 <template>
-
-        <div class="row">
+    <v-layout row wrap>
             <my-product v-for="(product, index) in products" :key="products.id"
                         @delete-product="deleteProduct(product)"
                         :authenticatedUser="authenticateUser"
@@ -10,11 +9,7 @@
 
             >
             </my-product>
-            <div class="col-md-12">
-                {{ $data  }}
-            </div>
-        </div>
-
+    </v-layout>
 </template>
 
 <script>
