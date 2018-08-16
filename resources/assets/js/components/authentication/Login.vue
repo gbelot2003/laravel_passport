@@ -1,29 +1,33 @@
 <template>
-    <div class="row">
-        <div class="col-md-6">
-            <div class="panel panel-default">
+    <v-container>
+        <v-layout row wrap>
+            <v-flex xs6 offset-xs3 class="contenedor">
+                <h3>Login</h3>
+                <v-form v-model="valid">
+                    <v-text-field
+                            v-model="email"
+                            :rules="emailRules"
+                            label="E-mail"
+                            required
+                    ></v-text-field>
+                    <v-text-field
+                            v-model="password"
+                            label="Password"
+                            type="password"
+                            required
+                    ></v-text-field>
+                    <v-btn
+                            :disabled="!valid"
+                            @click="login"
+                    >
+                        submit
+                    </v-btn>
+                    <v-btn @click="">clear</v-btn>
+                </v-form>
+            </v-flex>
+        </v-layout>
+    </v-container>
 
-                <div class="form-group">
-                    <input type="email"
-                           v-model="email"
-                           class="form-control"
-                           placeholder="E-mail">
-                </div>
-
-                <div class="form-group">
-                    <input type="password"
-                           v-model="password"
-                           class="form-control"
-                           placeholder="Password">
-                </div>
-                <p>user: gbelot2003@hotmail.com</p>
-                <p>pass: secret</p>
-
-                <button class="btn btn-success" @click="login">Login</button>
-            </div>
-        </div>
-        <pre>{{ $data }}</pre>
-    </div>
 </template>
 
 <script>
@@ -61,5 +65,15 @@
             }
         },
     }
-
 </script>
+
+<style>
+    .contenedor{
+        padding: 10px;
+        border-radius: 5px;
+        -webkit-box-shadow: 3px 5px 5px 4px rgba(0,0,0,0.33);
+        -moz-box-shadow: 3px 5px 5px 4px rgba(0,0,0,0.33);
+        box-shadow: 3px 5px 5px 4px rgba(0,0,0,0.33);
+        background: #EEEEEE;
+    }
+</style>

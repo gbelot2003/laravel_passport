@@ -19696,6 +19696,10 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(110)
+}
 var normalizeComponent = __webpack_require__(1)
 /* script */
 var __vue_script__ = __webpack_require__(37)
@@ -19704,7 +19708,7 @@ var __vue_template__ = __webpack_require__(39)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
-var __vue_styles__ = null
+var __vue_styles__ = injectStyle
 /* scopeId */
 var __vue_scopeId__ = null
 /* moduleIdentifier (server only) */
@@ -19815,6 +19819,10 @@ exports.default = {
 //
 //
 //
+//
+//
+//
+//
 
 /***/ }),
 /* 38 */
@@ -19837,71 +19845,85 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "row" }, [
-    _c("div", { staticClass: "col-md-6" }, [
-      _c("div", { staticClass: "panel panel-default" }, [
-        _c("div", { staticClass: "form-group" }, [
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.email,
-                expression: "email"
-              }
+  return _c(
+    "v-container",
+    [
+      _c(
+        "v-layout",
+        { attrs: { row: "", wrap: "" } },
+        [
+          _c(
+            "v-flex",
+            { staticClass: "contenedor", attrs: { xs6: "", "offset-xs3": "" } },
+            [
+              _c("h3", [_vm._v("Login")]),
+              _vm._v(" "),
+              _c(
+                "v-form",
+                {
+                  model: {
+                    value: _vm.valid,
+                    callback: function($$v) {
+                      _vm.valid = $$v
+                    },
+                    expression: "valid"
+                  }
+                },
+                [
+                  _c("v-text-field", {
+                    attrs: {
+                      rules: _vm.emailRules,
+                      label: "E-mail",
+                      required: ""
+                    },
+                    model: {
+                      value: _vm.email,
+                      callback: function($$v) {
+                        _vm.email = $$v
+                      },
+                      expression: "email"
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("v-text-field", {
+                    attrs: {
+                      label: "Password",
+                      type: "password",
+                      required: ""
+                    },
+                    model: {
+                      value: _vm.password,
+                      callback: function($$v) {
+                        _vm.password = $$v
+                      },
+                      expression: "password"
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "v-btn",
+                    {
+                      attrs: { disabled: !_vm.valid },
+                      on: { click: _vm.login }
+                    },
+                    [_vm._v("\n                    submit\n                ")]
+                  ),
+                  _vm._v(" "),
+                  _c("v-btn", { on: { click: function($event) {} } }, [
+                    _vm._v("clear")
+                  ])
+                ],
+                1
+              )
             ],
-            staticClass: "form-control",
-            attrs: { type: "email", placeholder: "E-mail" },
-            domProps: { value: _vm.email },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.email = $event.target.value
-              }
-            }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-group" }, [
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.password,
-                expression: "password"
-              }
-            ],
-            staticClass: "form-control",
-            attrs: { type: "password", placeholder: "Password" },
-            domProps: { value: _vm.password },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.password = $event.target.value
-              }
-            }
-          })
-        ]),
-        _vm._v(" "),
-        _c("p", [_vm._v("user: gbelot2003@hotmail.com")]),
-        _vm._v(" "),
-        _c("p", [_vm._v("pass: secret")]),
-        _vm._v(" "),
-        _c(
-          "button",
-          { staticClass: "btn btn-success", on: { click: _vm.login } },
-          [_vm._v("Login")]
-        )
-      ])
-    ]),
-    _vm._v(" "),
-    _c("pre", [_vm._v(_vm._s(_vm.$data))])
-  ])
+            1
+          )
+        ],
+        1
+      )
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -72475,6 +72497,46 @@ exports.default = {
 
     getters: {}
 };
+
+/***/ }),
+/* 110 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(111);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(7)("3f46457c", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3cfb8289\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Login.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3cfb8289\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Login.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 111 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(3)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.contenedor{\n    padding: 10px;\n    border-radius: 5px;\n    -webkit-box-shadow: 3px 5px 5px 4px rgba(0,0,0,0.33);\n    box-shadow: 3px 5px 5px 4px rgba(0,0,0,0.33);\n    background: #EEEEEE;\n}\n", ""]);
+
+// exports
+
 
 /***/ })
 /******/ ]);
