@@ -29,6 +29,12 @@
             <v-toolbar-items  class="hidden-sm-and-down">
 
 
+                <v-btn flat >
+                    <router-link to="/">
+                        <a class="white--text">Home</a>
+                    </router-link>
+                </v-btn>
+
                 <v-btn flat  v-if="! isAthenticated" >
                     <router-link to="/login">
                         <a class="white--text">Login</a>
@@ -42,7 +48,7 @@
                             color="primary"
                             dark
                     >
-                        {{ getUser.body.name }}
+                        {{ getUser }}
                     </v-btn>
                     <v-list>
                         <v-list-tile @click="logout">
@@ -78,6 +84,7 @@
                 drawer: false,
                 isAuth: null,
                 user: null,
+                Username: this.getUser
             }
         },
         props: {
@@ -105,7 +112,7 @@
                 return this.$store.getters.isLoggedIn;
             },
             getUser(){
-                return this.$store.getters.getUser;
+                return this.$store.getters.getUserName;
             }
         }
     }

@@ -19,6 +19,9 @@ export default {
         getUser(state){
             return state.currentUser;
         },
+        getUserName(state){
+            return state.currentUser.name
+        }
     },
     mutations:{
         loginSeccess(state, payload){
@@ -30,7 +33,7 @@ export default {
             localStorage.setItem('expiration', payload.expires_in);
         },
         setCurrentUser(state, payload){
-            state.currentUser = Object.assign(payload);
+            state.currentUser = Object.assign({}, payload.body);
             localStorage.setItem('user', JSON.stringify(state.currentUser.body))
         },
 

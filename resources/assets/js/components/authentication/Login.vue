@@ -71,7 +71,7 @@
                 })
                     .then(res => {
                         this.$store.commit('setCurrentUser', res);
-                        this.$router.push("/feed");
+                        this.$router.push("/dashboard");
                     })
             }
         },

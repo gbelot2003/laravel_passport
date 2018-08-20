@@ -15,8 +15,19 @@ Vue.use(Vuex);
 
 const store = new Vuex.Store(StoreData);
 
-
 Router.beforeEach(
+    (to, from, next) => {
+        if(to.matched.some(record => record.meta.forVisitors)){
+            console.log(store.getters.getUser);
+            next();
+        } else if (to.matched.some(record => record.meta.forAuth)){
+            console.log("Auth " + store.getters.getUser);
+            next();
+        }
+    }
+);
+
+/*Router.beforeEach(
     (to, from, next) => {
         if (to.matched.some(record => record.meta.forVisitors)) {
             if (store.getters.isLoggedIn === true) {
@@ -33,7 +44,7 @@ Router.beforeEach(
 
         }
     }
-);
+);*/
 
 new Vue({
     el: '#app',
