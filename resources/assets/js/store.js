@@ -17,8 +17,7 @@ export default {
             return state.token;
         },
         getUser(state){
-            let user = JSON.parse(localStorage.getItem('user'));
-            return state.currentUser = user;
+            return state.currentUser.body;
         }
     },
     mutations:{
@@ -31,7 +30,7 @@ export default {
             localStorage.setItem('expiration', payload.expires_in);
         },
         setCurrentUser(state, payload){
-            state.currentUser = Object.assign({}, payload);
+            state.currentUser = Object.assign(payload);
             localStorage.setItem('user', JSON.stringify(state.currentUser.body))
         },
 

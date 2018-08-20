@@ -44013,8 +44013,7 @@ exports.default = {
             return state.token;
         },
         getUser: function getUser(state) {
-            var user = JSON.parse(localStorage.getItem('user'));
-            return state.currentUser = user;
+            return state.currentUser.body;
         }
     },
     mutations: {
@@ -44027,7 +44026,7 @@ exports.default = {
             localStorage.setItem('expiration', payload.expires_in);
         },
         setCurrentUser: function setCurrentUser(state, payload) {
-            state.currentUser = Object.assign({}, payload);
+            state.currentUser = Object.assign(payload);
             localStorage.setItem('user', JSON.stringify(state.currentUser.body));
         },
         loginFail: function loginFail(state, payload) {
