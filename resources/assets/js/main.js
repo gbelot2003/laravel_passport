@@ -15,18 +15,17 @@ Vue.use(Vuex);
 
 const store = new Vuex.Store(StoreData);
 
-Vue.http.headers.common['Authorization'] = 'Bearer ' + Vue.auth.getToken();
 
 Router.beforeEach(
     (to, from, next) => {
         if (to.matched.some(record => record.meta.forVisitors)) {
-            if (Vue.auth.isAuthenticate() === true) {
+            if (store.getters.isLoggedIn === true) {
                 next({
                     path: '/feed'
                 })
             } else next()
         } else if (to.matched.some(records => records.meta.forAuth)) {
-            if (Vue.auth.isAuthenticate() != true) {
+            if (store.getters.isLoggedIn != true) {
                 next({
                     path: '/login'
                 })

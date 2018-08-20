@@ -1,30 +1,29 @@
-import {shallowMount, mount} from '@vue/test-utils';
-import NavBar from '../../../components/NabNar.vue';
-import auth from '../../../packages/auth/auth';
-import moxios from 'moxios'
-import axios from 'axios';
+import Vuex from 'vuex'
+import { shallow, createLocalVue } from '@vue/test-utils'
+import App from '../../../App.vue';
 
-describe('Navbar Testiong', () => {
 
-    beforeEach(() => {
-        moxios.install(axios);
-    });
+const localVue = createLocalVue()
+localVue.use(Vuex);
 
-   it('is configurate correcly', () => {
+describe('App ', () => {
+   it('render a value from $store.state', () => {
+       const wrapper = shallow(App, {
+           mocks:{
+             $store: {
+                 state: {
+                     isAuthenticate: true
+                 }
+             }
+           },
 
-       mount(NavBar, {
-           stubs: ['auth']
+           computed: {
+               isAuth: () => true,
+           },
+
+           localVue
        });
 
-       const wrapper = shallowMount(NavBar, {
-           stubs: {
-                'auth': auth
-           }
-       });
-
-   });
-
-    afterEach(() => {
-        moxios.uninstall(axios);
-    });
+       expect(wrapper.find('h2').text().trim()).toEqual('value')
+   })
 });

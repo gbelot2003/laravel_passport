@@ -28,6 +28,8 @@
 
 <script>
     import Swal from 'sweetalert2';
+    import axios from '../../packages/axios'
+
 
     export  default {
         created(){
@@ -41,15 +43,18 @@
 
         methods:{
             getProduct(){
-                this.$http.get('/api/products/' + this.$route.params.product)
+                axios().get('/api/products/' + this.$route.params.product)
                     .then(response => {
-                        this.product = response.body
+                        this.product = response.data;
+                        console.log(response)
                     })
             },
+
             update(){
-                this.$http.put('/api/products/' + this.$route.params.product, this.product)
+                axios().put('/api/products/' + this.$route.params.product, this.product)
                     .then(response => {
                         Swal("Updated!", "Your product has been updated", 'success');
+                        this.$router.push('/feed')
                     });
             }
         }

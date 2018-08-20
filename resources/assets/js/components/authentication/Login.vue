@@ -3,10 +3,9 @@
         <v-layout row wrap>
             <v-flex xs6 offset-xs3 class="contenedor">
                 <h3>Login</h3>
-                <v-form v-model="valid">
+                <v-form >
                     <v-text-field
                             v-model="email"
-                            :rules="emailRules"
                             label="E-mail"
                             required
                     ></v-text-field>
@@ -17,7 +16,6 @@
                             required
                     ></v-text-field>
                     <v-btn
-                            :disabled="!valid"
                             @click="login"
                     >
                         submit
@@ -32,6 +30,7 @@
 
 <script>
     import client_secret from '../../env';
+    import Swal from 'sweetalert2';
 
     export default {
         data () {
@@ -53,17 +52,35 @@
                 };
                 this.$http.post("/oauth/token", data)
                     .then(resp => {
-                        this.$auth.setToken(resp.body.access_token, resp.body.expires_in + Date.now());
-                        this.$router.push("/about");
-
+                        this.$store.commit("loginSeccess", resp.body);
+                        this.setUser(data);
                     }, resp => {
                         this.email = '';
                         this.password = '';
-                        console.log(resp);
-                        alert(resp.statusText)
+                        Swal("Error!!", "The identity is wrong", 'warning');
                     });
+
+
+            },
+            setUser(data){
+                console.log("Log " + this.getTokens)
+                this.$http.get('/api/user',{
+                    headers:{
+                        'Authorization' :  'Bearer ' + this.getTokens
+                    }
+                })
+                    .then(res => {
+                        this.$store.commit('setCurrentUser', res);
+                        this.$router.push("/feed");
+                    })
             }
         },
+        computed:{
+            getTokens(){
+                return this.$store.getters.getToken;
+            }
+        }
+
     }
 </script>
 

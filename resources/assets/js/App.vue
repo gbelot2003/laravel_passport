@@ -27,49 +27,50 @@
             <v-spacer></v-spacer>
             <v-toolbar-items  class="hidden-sm-and-down">
 
-                <v-btn flat  v-if="! isAuth" >
+                <v-btn flat >
+                    <router-link to="/login">
+                        <a class="white--text">!!</a>
+                    </router-link>
+                </v-btn>
+
+                <v-btn flat  v-if="! isAthenticated" >
                     <router-link to="/login">
                         <a class="white--text">Login</a>
                     </router-link>
                 </v-btn>
-                <v-btn flat v-if="isAuth">
+                <v-btn flat v-if="isAthenticated">
                     <router-link to="/register" >
                         <a class="white--text">Register</a>
                     </router-link>
                 </v-btn>
 
-                <v-btn flat v-if="isAuth" >
+                <v-btn flat v-if="isAthenticated" >
                     <router-link to="/feed" >
                         <a class="white--text">Feed</a>
                     </router-link>
                 </v-btn>
 
-                <v-btn flat v-if="isAuth">
+                <v-btn flat v-if="isAthenticated">
                     <router-link to="/products/create" >
                         <a class="white--text">Product Create</a>
                     </router-link>
                 </v-btn>
 
-                <v-btn flat v-if="! isAuth">
+                <v-btn flat v-if="! isAthenticated">
                     <router-link to="/products/create" >
                         <a class="white--text">About</a>
                     </router-link>
                 </v-btn>
 
-                <v-btn flat v-if="! isAuth">
+                <v-btn flat v-if="! isAthenticated">
                     <router-link to="/contact" >
                         <a class="white--text">Contact</a>
                     </router-link>
                 </v-btn>
 
-                <v-btn flat v-if="isAuth">
-                    <router-link to="#" @click="logout">
-                        <a class="white--text">logout</a>
-                    </router-link>
+                <v-btn flat v-if="isAthenticated">
+                    <a  v-on:click.stop.prevent="logout" class="white--text">logout</a>
                 </v-btn>
-
-
-
 
             </v-toolbar-items>
         </v-toolbar>
@@ -95,7 +96,8 @@
         data(){
             return{
                 drawer: false,
-                isAuth: null
+                isAuth: null,
+                user: null
             }
         },
         props: {
@@ -103,17 +105,8 @@
 
         },
         created(){
-            this.isAuth = this.$auth.isAuthenticate();
-            this.setAuthenticatedUser();
         },
         methods:{
-            setAuthenticatedUser(){
-                this.$http.get('api/user')
-                    .then(response => {
-                        this.$auth.setAuthenticatedUser(response.body);
-                        //console.log(this.$auth.getAuthenticatedUser());
-                    });
-            },
             goHome(){
                 this.$router.push("/");
             },
@@ -122,8 +115,17 @@
             },
 
             logout(){
-                this.$auth.destroyToken();
-                this.$router.push("/");
+                console.log('logout');
+                this.$store.commit("logout");
+                this.$router.push("/login");
+            }
+        },
+        computed:{
+            isAthenticated(){
+                return this.$store.getters.isLoggedIn;
+            },
+            getTokens(){
+                return this.$store.getters.getToken;
             }
         }
     }

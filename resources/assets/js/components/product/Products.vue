@@ -15,6 +15,7 @@
 <script>
     import Product from './Product';
     import Swal from 'sweetalert2';
+    import axios from '../../packages/axios'
 
     export default {
         data(){
@@ -25,9 +26,12 @@
         components:{
           'my-product' : Product
         },
-        computed: {
+        computed:{
+            getTokens(){
+                return this.$store.getters.getToken;
+            },
             authenticateUser(){
-                return this.$auth.getAuthenticatedUser()
+                return JSON.parse(this.$store.getters.getUser);
             }
         },
 
@@ -44,7 +48,7 @@
                 })
                     .then((result) => {
                         if (result.value) {
-                            this.$http.delete('api/products/' + product.id)
+                            axios().delete('api/products/' + product.id)
                                 .then(response => {
                                     let index = this.products.indexOf(product);
                                     console.log(index);
@@ -67,9 +71,9 @@
         },
 
         created() {
-            this.$http.get('/api/products')
+            axios().get('/api/products')
                 .then(response => {
-                    this.products = response.body;
+                    this.products = response.data;
                 });
         }
     }
