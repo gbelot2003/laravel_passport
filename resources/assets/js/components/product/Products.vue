@@ -31,7 +31,7 @@
                 return this.$store.getters.getToken;
             },
             authenticateUser(){
-                return JSON.parse(this.$store.getters.getUser);
+                return this.$store.getters.getUser
             }
         },
 

@@ -8,7 +8,6 @@
         >
             <v-list dense>
                 <v-list-tile @click="goHome">
-
                     <v-list-tile-content>
                         <v-list-tile-title>Link One</v-list-tile-title>
                     </v-list-tile-content>
@@ -20,60 +19,41 @@
                     </v-list-tile-content>
                 </v-list-tile>
             </v-list>
+
         </v-navigation-drawer>
+
         <v-toolbar color="blue" dark fixed app>
             <v-toolbar-title>Sistema de Encomiendas</v-toolbar-title>
             <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
             <v-spacer></v-spacer>
             <v-toolbar-items  class="hidden-sm-and-down">
 
-                <v-btn flat >
-                    <router-link to="/login">
-                        <a class="white--text">!!</a>
-                    </router-link>
-                </v-btn>
 
                 <v-btn flat  v-if="! isAthenticated" >
                     <router-link to="/login">
                         <a class="white--text">Login</a>
                     </router-link>
                 </v-btn>
-                <v-btn flat v-if="isAthenticated">
-                    <router-link to="/register" >
-                        <a class="white--text">Register</a>
-                    </router-link>
-                </v-btn>
 
-                <v-btn flat v-if="isAthenticated" >
-                    <router-link to="/feed" >
-                        <a class="white--text">Feed</a>
-                    </router-link>
-                </v-btn>
 
-                <v-btn flat v-if="isAthenticated">
-                    <router-link to="/products/create" >
-                        <a class="white--text">Product Create</a>
-                    </router-link>
-                </v-btn>
-
-                <v-btn flat v-if="! isAthenticated">
-                    <router-link to="/products/create" >
-                        <a class="white--text">About</a>
-                    </router-link>
-                </v-btn>
-
-                <v-btn flat v-if="! isAthenticated">
-                    <router-link to="/contact" >
-                        <a class="white--text">Contact</a>
-                    </router-link>
-                </v-btn>
-
-                <v-btn flat v-if="isAthenticated">
-                    <a  v-on:click.stop.prevent="logout" class="white--text">logout</a>
-                </v-btn>
+                <v-menu offset-y v-if="isAthenticated">
+                    <v-btn
+                            slot="activator"
+                            color="primary"
+                            dark
+                    >
+                        {{ getUser.name }}
+                    </v-btn>
+                    <v-list>
+                        <v-list-tile @click="logout">
+                            <v-list-tile-title>Logout</v-list-tile-title>
+                        </v-list-tile>
+                    </v-list>
+                </v-menu>
 
             </v-toolbar-items>
         </v-toolbar>
+
         <v-content>
             <v-container fluid fill-height>
                 <v-layout justify-center align-center>
@@ -97,7 +77,7 @@
             return{
                 drawer: false,
                 isAuth: null,
-                user: null
+                user: null,
             }
         },
         props: {
@@ -126,6 +106,9 @@
             },
             getTokens(){
                 return this.$store.getters.getToken;
+            },
+            getUser(){
+                return this.$store.getters.getUser;
             }
         }
     }

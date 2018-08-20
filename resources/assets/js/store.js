@@ -17,7 +17,7 @@ export default {
             return state.token;
         },
         getUser(state){
-            let user = localStorage.getItem('user');
+            let user = JSON.parse(localStorage.getItem('user'));
             return state.currentUser = user;
         }
     },

@@ -16558,26 +16558,6 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 exports.default = {
     data: function data() {
@@ -16613,6 +16593,9 @@ exports.default = {
         },
         getTokens: function getTokens() {
             return this.$store.getters.getToken;
+        },
+        getUser: function getUser() {
+            return this.$store.getters.getUser;
         }
     }
 };
@@ -16699,17 +16682,6 @@ var render = function() {
             "v-toolbar-items",
             { staticClass: "hidden-sm-and-down" },
             [
-              _c(
-                "v-btn",
-                { attrs: { flat: "" } },
-                [
-                  _c("router-link", { attrs: { to: "/login" } }, [
-                    _c("a", { staticClass: "white--text" }, [_vm._v("!!")])
-                  ])
-                ],
-                1
-              ),
-              _vm._v(" "),
               !_vm.isAthenticated
                 ? _c(
                     "v-btn",
@@ -16727,96 +16699,43 @@ var render = function() {
               _vm._v(" "),
               _vm.isAthenticated
                 ? _c(
-                    "v-btn",
-                    { attrs: { flat: "" } },
+                    "v-menu",
+                    { attrs: { "offset-y": "" } },
                     [
-                      _c("router-link", { attrs: { to: "/register" } }, [
-                        _c("a", { staticClass: "white--text" }, [
-                          _vm._v("Register")
-                        ])
-                      ])
+                      _c(
+                        "v-btn",
+                        {
+                          attrs: {
+                            slot: "activator",
+                            color: "primary",
+                            dark: ""
+                          },
+                          slot: "activator"
+                        },
+                        [
+                          _vm._v(
+                            "\n                    " +
+                              _vm._s(_vm.getUser.name) +
+                              "\n                "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-list",
+                        [
+                          _c(
+                            "v-list-tile",
+                            { on: { click: _vm.logout } },
+                            [_c("v-list-tile-title", [_vm._v("Logout")])],
+                            1
+                          )
+                        ],
+                        1
+                      )
                     ],
                     1
                   )
-                : _vm._e(),
-              _vm._v(" "),
-              _vm.isAthenticated
-                ? _c(
-                    "v-btn",
-                    { attrs: { flat: "" } },
-                    [
-                      _c("router-link", { attrs: { to: "/feed" } }, [
-                        _c("a", { staticClass: "white--text" }, [
-                          _vm._v("Feed")
-                        ])
-                      ])
-                    ],
-                    1
-                  )
-                : _vm._e(),
-              _vm._v(" "),
-              _vm.isAthenticated
-                ? _c(
-                    "v-btn",
-                    { attrs: { flat: "" } },
-                    [
-                      _c("router-link", { attrs: { to: "/products/create" } }, [
-                        _c("a", { staticClass: "white--text" }, [
-                          _vm._v("Product Create")
-                        ])
-                      ])
-                    ],
-                    1
-                  )
-                : _vm._e(),
-              _vm._v(" "),
-              !_vm.isAthenticated
-                ? _c(
-                    "v-btn",
-                    { attrs: { flat: "" } },
-                    [
-                      _c("router-link", { attrs: { to: "/products/create" } }, [
-                        _c("a", { staticClass: "white--text" }, [
-                          _vm._v("About")
-                        ])
-                      ])
-                    ],
-                    1
-                  )
-                : _vm._e(),
-              _vm._v(" "),
-              !_vm.isAthenticated
-                ? _c(
-                    "v-btn",
-                    { attrs: { flat: "" } },
-                    [
-                      _c("router-link", { attrs: { to: "/contact" } }, [
-                        _c("a", { staticClass: "white--text" }, [
-                          _vm._v("Contact")
-                        ])
-                      ])
-                    ],
-                    1
-                  )
-                : _vm._e(),
-              _vm._v(" "),
-              _vm.isAthenticated
-                ? _c("v-btn", { attrs: { flat: "" } }, [
-                    _c(
-                      "a",
-                      {
-                        staticClass: "white--text",
-                        on: {
-                          click: function($event) {
-                            $event.stopPropagation()
-                            $event.preventDefault()
-                            return _vm.logout($event)
-                          }
-                        }
-                      },
-                      [_vm._v("logout")]
-                    )
-                  ])
                 : _vm._e()
             ],
             1
@@ -21384,7 +21303,7 @@ exports.default = {
             return this.$store.getters.getToken;
         },
         authenticateUser: function authenticateUser() {
-            return JSON.parse(this.$store.getters.getUser);
+            return this.$store.getters.getUser;
         }
     },
 
@@ -44094,7 +44013,7 @@ exports.default = {
             return state.token;
         },
         getUser: function getUser(state) {
-            var user = localStorage.getItem('user');
+            var user = JSON.parse(localStorage.getItem('user'));
             return state.currentUser = user;
         }
     },
