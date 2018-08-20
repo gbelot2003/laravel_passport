@@ -83,14 +83,3 @@
 
     }
 </script>
-
-<style>
-    .contenedor{
-        padding: 10px;
-        border-radius: 5px;
-        -webkit-box-shadow: 3px 5px 5px 4px rgba(0,0,0,0.33);
-        -moz-box-shadow: 3px 5px 5px 4px rgba(0,0,0,0.33);
-        box-shadow: 3px 5px 5px 4px rgba(0,0,0,0.33);
-        background: #EEEEEE;
-    }
-</style>

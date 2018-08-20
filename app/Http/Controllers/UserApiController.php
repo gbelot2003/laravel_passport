@@ -7,8 +7,8 @@ use Illuminate\Http\Request;
 
 class UserApiController extends Controller
 {
-    public function user()
+    public function user(Request $request)
     {
-        return User::with('roles')->get();
+         return $request->user();
     }
 }

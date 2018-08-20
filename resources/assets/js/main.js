@@ -21,7 +21,7 @@ Router.beforeEach(
         if (to.matched.some(record => record.meta.forVisitors)) {
             if (store.getters.isLoggedIn === true) {
                 next({
-                    path: '/feed'
+                    path: '/dashboard'
                 })
             } else next()
         } else if (to.matched.some(records => records.meta.forAuth)) {

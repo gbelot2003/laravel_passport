@@ -2,12 +2,9 @@ import Vue from "vue";
 import VueRouter from 'vue-router';
 
 import HomePage from "./components/pages/HomePages.vue";
+import Dashboard from "./components/pages/Dashboard.vue";
 import Login from "./components/authentication/Login.vue";
-import Register from "./components/authentication/Register.vue";
-import About from './components/pages/About.vue';
 import Feed from './components/Feed.vue';
-import Edit from './components/product/Edit';
-import Contact from './components/Contact.vue';
 
 Vue.use(VueRouter);
 
@@ -20,35 +17,6 @@ const router = new VueRouter({
                 forVisitors: true
             }
         },
-        {
-            path: "/feed",
-            component: Feed,
-            meta:{
-                forAuth: true
-            }
-        },
-        {
-            path: "/products/create",
-            component: require('./components/product/Create'),
-            meta:{
-                forAuth: true
-            }
-        },
-        {
-            path: "/products/:product/edit",
-            component: Edit,
-            meta:{
-                forAuth: true
-            }
-        },
-
-        {
-            path: "/about",
-            component: About,
-            meta:{
-                forAuth: true
-            }
-        },
 
         {
             path: "/login",
@@ -59,17 +27,10 @@ const router = new VueRouter({
 
         },
         {
-            path: "/register",
-            component: Register,
+            path: "/dashboard",
+            component: Dashboard,
             meta: {
                 forAuth: true
-            }
-        },
-        {
-            path: "/contact",
-            component: Contact,
-            meta: {
-                forVisitors: true
             }
 
         },

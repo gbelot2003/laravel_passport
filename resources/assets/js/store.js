@@ -17,8 +17,8 @@ export default {
             return state.token;
         },
         getUser(state){
-            return state.currentUser.body;
-        }
+            return state.currentUser;
+        },
     },
     mutations:{
         loginSeccess(state, payload){

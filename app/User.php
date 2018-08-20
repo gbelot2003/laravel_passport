@@ -10,10 +10,7 @@ use Zizaco\Entrust\Traits\EntrustUserTrait;
 
 class User extends Authenticatable
 {
-    use Notifiable, HasApiTokens, EntrustUserTrait{
-                                        //add insteadof avoid php trait conflict resolution
-                                        EntrustUserTrait ::can insteadof Authorizable;
-                                    }
+    use Notifiable, HasApiTokens, EntrustUserTrait;
 
     /**
      * The attributes that are mass assignable.

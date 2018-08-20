@@ -42,7 +42,7 @@
                             color="primary"
                             dark
                     >
-                        {{ getUser.name }}
+                        {{ getUser.body.name }}
                     </v-btn>
                     <v-list>
                         <v-list-tile @click="logout">
@@ -103,9 +103,6 @@
         computed:{
             isAthenticated(){
                 return this.$store.getters.isLoggedIn;
-            },
-            getTokens(){
-                return this.$store.getters.getToken;
             },
             getUser(){
                 return this.$store.getters.getUser;
