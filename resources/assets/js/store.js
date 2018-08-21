@@ -8,6 +8,7 @@ export default {
         loading: false,
         isLoggedIn: '',
         currentUser: {},
+        userName: localStorage.getItem('userName')
     },
     getters:{
         isLoggedIn(state){
@@ -20,7 +21,7 @@ export default {
             return state.currentUser;
         },
         getUserName(state){
-            return state.currentUser.name
+            return state.userName
         }
     },
     mutations:{
@@ -34,7 +35,13 @@ export default {
         },
         setCurrentUser(state, payload){
             state.currentUser = Object.assign({}, payload.body);
-            localStorage.setItem('user', JSON.stringify(state.currentUser.body))
+            state.userName = Object.assign(payload.body.name);
+            localStorage.setItem('user', JSON.stringify(state.currentUser));
+            localStorage.setItem('userName', JSON.stringify(state.userName));
+
+        },
+        setisLoggedIn(state){
+            state.isLoggedIn = true
         },
 
         loginFail(state, payload){
@@ -45,6 +52,7 @@ export default {
             localStorage.removeItem('token');
             localStorage.removeItem('expiration');
             localStorage.removeItem('user');
+            localStorage.removeItem('userName');
             state.isLoggedIn = false;
             state.currentUser = null;
         }

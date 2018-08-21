@@ -21,7 +21,8 @@ Router.beforeEach(
             console.log(store.getters.getUser);
             next();
         } else if (to.matched.some(record => record.meta.forAuth)){
-            console.log("Auth " + store.getters.getUser);
+            console.log(store.getters.getUser);
+            store.commit('setisLoggedIn', true);
             next();
         }
     }

@@ -29,7 +29,7 @@
             <v-toolbar-items  class="hidden-sm-and-down">
 
 
-                <v-btn flat >
+                <v-btn flat v-if="! isAthenticated">
                     <router-link to="/">
                         <a class="white--text">Home</a>
                     </router-link>
@@ -41,6 +41,11 @@
                     </router-link>
                 </v-btn>
 
+                <v-btn flat v-if="isAthenticated">
+                    <router-link to="/dashboard" >
+                        <a class="white--text">Dashboard</a>
+                    </router-link>
+                </v-btn>
 
                 <v-menu offset-y v-if="isAthenticated">
                     <v-btn
@@ -83,8 +88,6 @@
             return{
                 drawer: false,
                 isAuth: null,
-                user: null,
-                Username: this.getUser
             }
         },
         props: {
