@@ -8,7 +8,8 @@ export default {
         loading: false,
         isLoggedIn: '',
         currentUser: {},
-        userName: localStorage.getItem('userName')
+        userName: localStorage.getItem('userName'),
+        role: []
     },
     getters:{
         isLoggedIn(state){
@@ -22,6 +23,9 @@ export default {
         },
         getUserName(state){
             return state.userName
+        },
+        getUserRole(stete){
+
         }
     },
     mutations:{

@@ -1,5 +1,6 @@
 <?php
 
+use App\User;
 use Illuminate\Http\Request;
 
 /*
@@ -14,10 +15,14 @@ use Illuminate\Http\Request;
 */
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+    $role = User::where('id', $request->user()->id)->first();
+    return $role;
 });
 
-//Route::middleware('auth:api')->get('/user', 'UserApiController@user');
+Route::get('/user/role/{id}', function ($id) {
+    $role = User::findOrFail($id);
+    return $role->firstRole();
+});
 
 Route::group(['middleware' => 'auth:api'], function (){
     Route::resource('products', 'ProductController');

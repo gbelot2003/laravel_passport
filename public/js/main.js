@@ -45023,7 +45023,8 @@ exports.default = {
         loading: false,
         isLoggedIn: '',
         currentUser: {},
-        userName: localStorage.getItem('userName')
+        userName: localStorage.getItem('userName'),
+        role: []
     },
     getters: {
         isLoggedIn: function isLoggedIn(state) {
@@ -45037,7 +45038,8 @@ exports.default = {
         },
         getUserName: function getUserName(state) {
             return state.userName;
-        }
+        },
+        getUserRole: function getUserRole(stete) {}
     },
     mutations: {
         loginSeccess: function loginSeccess(state, payload) {
